@@ -4,81 +4,28 @@ import math
 import random
 import numpy as np
 import random
-data = []
-IDlist = [9]#range(18) #
+
+IDlist = [9]
 Hours = 9
 Limit = 130
-for i in range(18):
-	data.append([])
-n_row = 0
-text = open('../HW1/train.csv', 'r', encoding='big5') 
-row = csv.reader(text , delimiter=",")
-for r in row:
-	if n_row != 0:
-		for i in range(3,27):
-			if r[i] != "NR":
-				data[(n_row-1)%18].append(float(r[i]))
-			else:
-				data[(n_row-1)%18].append(float(0))	
-	n_row = n_row+1
-text.close()
-NUM = len(data[0])
-
-
-
-x = []
-y = []
-for i in range(12):
-	for j in range(471):
-		x.append([])
-		for poison in IDlist:
-			for s in range(Hours):
-				x[471*i+j].append(data[poison][480*i+j+s] )
-		y.append(data[9][480*i+j+9])
-
-T = len(x)
-origin_x = x
-while T > 0:
-	for c in range(0*Hours, 1*Hours):
-		if x[T-1][c] >= Limit or x[T-1][c] <= 0:
-			del x[T-1]
-			del y[T-1]
-			break
-	T -= 1
-x = np.array(x)
-y = np.array(y)
-x = np.concatenate((x,x**2,x**3,x**4,x**5), axis=1)
-x = np.concatenate((np.ones((x.shape[0], 1)), x), axis=1)
-print(len(x[0]))
-w = np.zeros(len(x[0]))	# initial weight vector
-lr = 0.0001				# learning rate
-Iter = 100000			# iteration
-Lambda = 1
-
-x_t = x.transpose()
-s_gra = np.zeros(len(x[0]))
-Sigma = 0
-w = np.dot(np.linalg.pinv(x),y)
-print(w)
-print ('Cost: %f' % ( math.sqrt(np.sum((np.dot(x, w) - y)**2) / y.shape[0])))
-
-for i in range(Iter):
-	
-	loss = np.dot(x, w) - y
-	cost = np.sum(loss**2) / loss.shape[0]
-	gra = np.dot(x_t, loss) + Lambda * w
-	s_gra += gra**2
-	ada = np.sqrt(s_gra)
-	Sigma += np.sum(gra**2)
-	w = w - lr * gra/ada
-	if i%10000 == 9999:
-		print ('iteration: %d | Cost: %f' % ( i+1, math.sqrt(cost)))
-
-
-
+w = []
+w = [ 1.63813038e+00, -1.00978456e-01, 1.80654144e-01, 1.95491318e-01,
+-2.25686612e-01, 2.88118959e-02, 3.79189662e-01, -4.84650648e-01,
+2.58619333e-01, 6.72988239e-01, 1.74321385e-03, -8.82849307e-03,
+-2.28043400e-03, -1.57490752e-03, -1.97005672e-03, 7.91053071e-03,
+-6.72185119e-03, -9.65300694e-03, 2.16272536e-02, 2.76801666e-05
+, 1.61736759e-04, 1.12243821e-04, 3.07200455e-05, 3.68894760e-05,
+-1.35042216e-04, 1.12441145e-04, 1.78353663e-04, -5.07236910e-04 ,
+-5.75273758e-07, -1.78279631e-06, -1.33653206e-06, 1.06638640e-07,
+-1.18083421e-06, 1.31155710e-06, 6.57942392e-08, -3.35515096e-06,
+6.74899264e-06, 2.16424524e-09, 7.83581730e-09, 5.08117146e-09,
+-2.66279127e-09, 8.28394090e-09, -5.31249446e-09, -5.54166535e-09,
+2.02623463e-08, -3.23369499e-08 ]
+w = np.asarray(w)
+# print(w)
 test_x = []
 n_row = 0
-text = open("./test.csv" ,"r")
+text = open("../HW1/test.csv" ,"r")
 row = csv.reader(text , delimiter= ",")
 
 for r in row:
@@ -115,7 +62,7 @@ for i in range(len(test_x)):
 	a = np.dot(w,test_x[i])
 	ans[i].append(a)
 
-filename = "sub-10w.csv"
+filename = "sub-100w-d.csv"
 text = open(filename, "w+")
 s = csv.writer(text, delimiter=',', lineterminator='\n')
 s.writerow(["id","value"])
