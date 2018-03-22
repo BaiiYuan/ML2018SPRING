@@ -11,7 +11,7 @@ Limit = 130
 for i in range(18):
 	data.append([])
 n_row = 0
-text = open('../HW1/train.csv', 'r', encoding='big5') 
+text = open('.train.csv', 'r', encoding='big5') 
 row = csv.reader(text , delimiter=",")
 for r in row:
 	if n_row != 0:
@@ -22,7 +22,7 @@ for r in row:
 				data[(n_row-1)%18].append(float(0))	
 	n_row = n_row+1
 text.close()
-NUM = len(data[0])
+# NUM = len(data[0])
 
 
 
@@ -51,7 +51,7 @@ x = np.array(x)
 y = np.array(y)
 # x = np.concatenate((x,x**2,x**3,x**4,x**5), axis=1)
 x = np.concatenate((np.ones((x.shape[0], 1)), x), axis=1)
-print(len(x[0]))
+# print(len(x[0]))
 w = np.zeros(len(x[0]))	# initial weight vector
 lr = 0.005				# learning rate
 Iter = 150000			# iteration
@@ -73,9 +73,12 @@ for i in range(Iter):
 	if i%10000 == 9999:
 		print ('iteration: %d | Cost: %f' % ( i+1, math.sqrt(cost)))
 
+np.save("model_hw1.npy",w)
+print("w = ", w)
+
 test_x = []
 n_row = 0
-text = open("../HW1/test.csv" ,"r")
+text = open(sys.argv[1] ,"r")
 row = csv.reader(text , delimiter= ",")
 
 for r in row:
@@ -111,7 +114,7 @@ for i in range(len(test_x)):
 	a = np.dot(w,test_x[i])
 	ans[i].append(a)
 
-filename = "sub-usual.csv"
+filename = sys.argv[2]
 text = open(filename, "w+")
 s = csv.writer(text, delimiter=',', lineterminator='\n')
 s.writerow(["id","value"])
