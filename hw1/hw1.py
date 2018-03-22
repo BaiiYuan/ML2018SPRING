@@ -10,7 +10,7 @@ Hours = 9
 Limit = 130
 
 w = np.load("model_hw1.npy")
-print(w)
+# print(w)
 test_x = []
 n_row = 0
 text = open(sys.argv[1] ,"r")

@@ -25,7 +25,7 @@ w = np.asarray(w)
 # print(w)
 test_x = []
 n_row = 0
-text = open("../HW1/test.csv" ,"r")
+text = open(sys.argv[1] ,"r")
 row = csv.reader(text , delimiter= ",")
 
 for r in row:
@@ -62,7 +62,7 @@ for i in range(len(test_x)):
 	a = np.dot(w,test_x[i])
 	ans[i].append(a)
 
-filename = "sub-hw1_best.csv"
+filename = sys.argv[2]
 text = open(filename, "w+")
 s = csv.writer(text, delimiter=',', lineterminator='\n')
 s.writerow(["id","value"])
