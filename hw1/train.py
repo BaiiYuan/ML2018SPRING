@@ -49,7 +49,6 @@ while T > 0:
 	T -= 1
 x = np.array(x)
 y = np.array(y)
-# x = np.concatenate((x,x**2,x**3,x**4,x**5), axis=1)
 x = np.concatenate((np.ones((x.shape[0], 1)), x), axis=1)
 # print(len(x[0]))
 w = np.zeros(len(x[0]))	# initial weight vector
@@ -105,7 +104,6 @@ for r in row:
 	n_row = n_row+1
 text.close()
 test_x = np.array(test_x)
-# test_x = np.concatenate((test_x,test_x**2,test_x**3,test_x**4,test_x**5), axis=1)
 test_x = np.concatenate((np.ones((test_x.shape[0],1)),test_x), axis=1)
 
 ans = []
