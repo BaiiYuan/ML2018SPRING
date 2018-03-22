@@ -73,8 +73,8 @@ for i in range(Iter):
 	if i%10000 == 9999:
 		print ('iteration: %d | Cost: %f' % ( i+1, math.sqrt(cost)))
 
-np.save("model_hw1.npy",w)
-print("w = ", w)
+# np.save("model_hw1.npy",w)
+# print("w = ", w)
 
 test_x = []
 n_row = 0
