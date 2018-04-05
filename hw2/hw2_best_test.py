@@ -8,19 +8,9 @@ def add_feature(DF):
 	print(tmp.shape)
 	DF, tmp = np.asarray(DF), np.asarray(tmp)
 	print(DF.shape)
-	DF = np.concatenate(
-		(DF, tmp**2, tmp**3, tmp**4, tmp**5,
-			tmp**6, tmp**7, tmp**8, tmp**9, tmp**10,
-			tmp**11, tmp**12, tmp**13, tmp**14, tmp**15,
-			tmp**16, tmp**17, tmp**18, tmp**19, tmp**20,
-			tmp**21, tmp**22, tmp**23, tmp**24, tmp**25,
-			tmp**26, tmp**27, tmp**28, tmp**29, tmp**30,
-			tmp**31, tmp**32, tmp**33, tmp**34, tmp**35,
-			tmp**36, tmp**37, tmp**38, tmp**39, tmp**40,
-			tmp**41, tmp**42, tmp**43, tmp**44, tmp**45,
-			tmp**46, tmp**47, tmp**48, tmp**49, tmp**50,
-			np.sin(tmp), np.cos(tmp), np.tan(tmp), np.arctan(tmp)),
-		axis = 1)
+	for i in range(2, 51):
+		DF = np.concatenate((DF, tmp**i), axis = 1)
+	DF = np.concatenate((DF, np.sin(tmp), np.cos(tmp), np.tan(tmp), np.arctan(tmp)), axis = 1)
 	return DF
 
 x = pd.read_csv(sys.argv[1])
@@ -40,9 +30,12 @@ X_train = sc.transform(X_train)
 X_test = sc.transform(X_test)
 
 
-from sklearn.externals import joblib
-lr = joblib.load("train_model.m")
+# from sklearn.externals import joblib
+# lr = joblib.load("train_model.m")
 
+import pickle 
+with open('./train_model.pickle', 'rb') as f:
+    lr = pickle.load(f)
 
 ans = []
 a = lr.predict(X_test)

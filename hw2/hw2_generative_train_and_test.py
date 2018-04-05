@@ -26,7 +26,9 @@ text.close()
 y = np.asarray(y)
 print(y)
 
-
+x1 = x[:, 0:10]
+x2 = x[:, 11:]
+x = np.concatenate((x1, x2), axis=1)
 
 NUM = x.shape[0]
 print(NUM)
@@ -59,6 +61,9 @@ for r in row:
 	n_row = n_row+1
 text.close()
 test_x = np.array(test_x)
+test_x1 = test_x[:, 0:10]
+test_x2 = test_x[:, 11:]
+test_x = np.concatenate((test_x1, test_x2), axis=1)
 
 sig_i = np.linalg.pinv(sig)
 ans = []
@@ -71,7 +76,7 @@ for i in range(len(test_x)):
 	# print(c)
 	p_0 = 1 / ( 1+n_1/n_0*(math.e**c) )
 	print(p_0)
-	if p_0 > 0.45 :
+	if p_0 > 0.4 :
 		ans[i].append(0)
 	else:
 		ans[i].append(1)

@@ -45,7 +45,7 @@ x = np.concatenate((x1, x2), axis=1)
 x = np.concatenate( ( np.ones((x.shape[0], 1)), x ) , axis=1)
 # print(len(x))
 
-lr = 0.1		# learning rate
+lr = 1e-2		# learning rate
 Iter = 5000			# iteration
 NUM = len(x)
 x_t = x.transpose()
