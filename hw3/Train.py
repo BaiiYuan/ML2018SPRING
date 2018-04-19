@@ -2,8 +2,7 @@ import sys
 import csv
 import pandas as pd
 import numpy as np
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+
 # np.random.seed(1337)  # for reproducibility
 # from keras.datasets import mnist
 from keras.utils import * #np_utils, print_summary
