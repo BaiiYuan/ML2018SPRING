@@ -51,7 +51,7 @@ U, s, V = np.linalg.svd((X*255 - Mean_X*255).T, full_matrices=False)
 print(U[:,0:EigenNUM])
 ## Reconstruct
 y_name = sys.argv[2]
-file_name = y_name
+file_name = folder_name+y_name
 print(file_name)
 img = io.imread(file_name)/255.
 y = img.flatten()
