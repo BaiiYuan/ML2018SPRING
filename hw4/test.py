@@ -18,6 +18,6 @@ for i, r in enumerate(row):
 		p2 = answer[int(r[2])]
 		if p1==p2:	pred = 1
 		else:		pred = 0
-		print(p1,p2,pred)
+		# print(p1,p2,pred)
 		s.write("{},{}\n".format(i-1, pred))
 text.close()
