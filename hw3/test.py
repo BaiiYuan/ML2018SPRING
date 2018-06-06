@@ -4,17 +4,11 @@ import pandas as pd
 import numpy as np
 
 
-# from keras.utils import * #np_utils, print_summary
-# from keras.models import Sequential, Model
-# from keras.layers import Dense, Activation, Convolution2D, MaxPooling2D, Flatten, Dropout, Add, Input, AveragePooling2D
-# from keras.optimizers import Adam, RMSprop
-# from keras import regularizers
 
 from keras.models import load_model
 
 print('------------ Loading ------------')
 Yeee = load_model('BestMix2.h5?dl=1')
-
 
 print('------------ Saveing ------------')
 
