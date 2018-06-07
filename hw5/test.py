@@ -105,6 +105,7 @@ for i in range(len(tmp_x_test)):
 
 print("---- Loading model... ----")
 model = load_model(sys.argv[3])
+# print(model.summary())
 
 print("---- Predict... ----")
 
