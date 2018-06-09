@@ -11,7 +11,6 @@ from keras.models import Model, load_model
 from keras.optimizers import Adam
 from sklearn.model_selection import train_test_split
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 print("Keras's version ----> ", keras.__version__)
 
 
@@ -34,10 +33,10 @@ print(model.summary())
 
 print("---- Pridict... ----")
 a = model.predict([User, Movie], verbose=1)
-print(a)
+# print(a)
 a = np.clip(a, 1, 5)
-print(a)
-print(a.shape)
+# print(a)
+# print(a.shape)
 print("---- CSV writing... ----")
 ans = []
 for i in range(len(a)):

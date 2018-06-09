@@ -13,7 +13,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 print("Keras's version ----> ", keras.__version__)
 
 Normalize = False
@@ -62,7 +61,7 @@ for i in range(len(Movie_info)):
 	if Movie_info[i] == []:
 		Movie_info[i] = np.asarray([0.]*18)
 
-print(np.asarray(Movie_info).shape)
+# print(np.asarray(Movie_info).shape)
 
 
 
@@ -91,7 +90,7 @@ print(m_info.shape, u_info.shape)
 
 model = load_model(sys.argv[2])
 
-print(model.summary())
+# print(model.summary())
 
 
 print("---- Pridict... ----")
@@ -99,10 +98,10 @@ a = model.predict([User, Movie, u_info, m_info], verbose=1)
 if Normalize:
 	a = (a *std)+mean
 
-print(a)
+# print(a)
 a = np.clip(a, 1, 5)
-print(a)
-print(a.shape)
+# print(a)
+# print(a.shape)
 print("---- CSV writing... ----")
 ans = []
 for i in range(len(a)):
