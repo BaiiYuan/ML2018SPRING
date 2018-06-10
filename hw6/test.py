@@ -4,12 +4,12 @@ import pandas as pd
 import numpy as np
 import os
 import keras
-from sklearn.preprocessing import StandardScaler
-from keras.utils import *
-from keras.layers import Input, Dense, Flatten, Dropout, merge, Embedding
+# from sklearn.preprocessing import StandardScaler
+# from keras.utils import *
+# from keras.layers import Input, Dense, Flatten, Dropout, merge, Embedding
 from keras.models import Model, load_model
-from keras.optimizers import Adam
-from sklearn.model_selection import train_test_split
+# from keras.optimizers import Adam
+# from sklearn.model_selection import train_test_split
 
 print("Keras's version ----> ", keras.__version__)
 
